@@ -1,0 +1,15 @@
+.start-btn {
+  font-size: 1.25em;
+  font-weight: 700;
+  color: white;
+  padding: 10px 20px;
+  border: solid 1px gray;
+  width: 150px;
+  margin-left: 20px;
+  background-color: black;
+  display: inline-block;
+  cursor: pointer;
+}
+.start-btn:hover {
+  opacity: 0.8;
+}

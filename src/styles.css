@@ -1,0 +1,48 @@
+/* .form-file {
+  font-family: sans-serif;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  margin: 25% 0;
+  justify-content: center;
+  align-items: center;
+}
+
+#myProgress {
+  width: 20%;
+  margin-top: 10px;
+  background-color: grey;
+}
+
+#myBar {
+  width: 1%;
+  height: 30px;
+  background-color: green;
+} */
+
+* {
+  background: black;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.pink-border {
+  border: solid 2px rgb(226, 52, 87);
+  width: auto;
+  height: 90vh;
+}
+.file-btn-container {
+  display: flex;
+  margin: 20px;
+}
+
+table {
+  width: auto;
+  counter-reset: row-num;
+  text-align: left;
+}
+/* table tr {
+  counter-increment: row-num;
+}
+table tr td:first-child::before {
+  content: counter(row-num) ". ";
+} */

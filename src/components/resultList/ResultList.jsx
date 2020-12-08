@@ -8,7 +8,7 @@ function ResultList({ resultList, toggleResult }) {
           return (
             <tr>
               {sounds.map((sound) => {
-                return sound.events[0] + "\n";
+                return sound[0] + "\n";
               })}
             </tr>
           );

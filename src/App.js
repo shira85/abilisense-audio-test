@@ -66,8 +66,11 @@ export default function App() {
     let space_count = 0;
     let tempString = "";
     let resultArray = [];
-    let spaceIdx = -1;
+
     for (const char of json) {
+      if (tempString == "Fireworks") {
+        tempString = "Explosion";
+      }
       if (char == " ") {
         space_count++;
       }
@@ -75,6 +78,7 @@ export default function App() {
         resultArray.push(tempString);
         tempString = "";
         space_count = 0;
+        continue;
       }
       tempString += char;
     }
@@ -119,11 +123,6 @@ export default function App() {
     }
   };
 
-  // const sendCSVToEmail = () => {
-  //   downloadCSV();
-  //
-  // };
-
   const arrangeStringResult = (json) => {
     for (let res in json) {
       let spaceIdx = json[res].events[0].indexOf(" ");
@@ -142,7 +141,6 @@ export default function App() {
   };
 
   const clearAll = () => {
-    document.getElementById("file").value = "";
     setFileList([]);
     setResultList([]);
     setToggleResult(false);

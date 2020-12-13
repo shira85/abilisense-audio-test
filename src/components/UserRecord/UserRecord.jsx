@@ -1,13 +1,6 @@
-import React, { useState } from 'react'
-import RecordRTC from 'recordrtc'
+import React from 'react'
 
 const UserRecord = ({ checkRecordSize }) => {
-  // Based on Muaz Khan's RecordRTC Repository
-  //
-  // https://github.com/muaz-khan/RecordRTC
-  //
-  // www.MuazKhan.com
-
   var Storage = {}
   var AudioContext = window.AudioContext || window.webkitAudioContext
   var recorder = new AudioRecorder()
@@ -41,6 +34,7 @@ const UserRecord = ({ checkRecordSize }) => {
     this.stop = function () {
       stopRecording(function (blob) {
         blob.name = 'record.wav'
+        console.log(blob)
         checkRecordSize(blob)
         var url = URL.createObjectURL(blob)
         var audio = document.querySelector('audio')
@@ -108,7 +102,7 @@ const UserRecord = ({ checkRecordSize }) => {
           numberOfAudioChannels
         )
       } else {
-        throw 'WebAudio API has no support on this browser.'
+        alert('WebAudio API has no support on this browser.')
       }
 
       jsAudioNode.connect(Storage.ctx.destination)

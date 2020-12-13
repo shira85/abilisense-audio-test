@@ -9,14 +9,12 @@
   "main": "src/index.js",
   "dependencies": {
     "@material-ui/core": "4.11.1",
-    "audiobuffer-to-wav": "^1.0.0",
     "prop-types": "15.7.2",
     "react": "17.0.0",
     "react-csv": "2.0.3",
     "react-dom": "17.0.0",
-    "react-media-recorder": "^1.4.0",
-    "react-mic": "^12.4.6",
     "react-scripts": "3.4.3",
+    "recorder-js": "^1.0.7",
     "recordrtc": "^5.6.1",
     "swagger": "0.7.5",
     "xhr": "^2.6.0"

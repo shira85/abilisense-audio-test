@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { CircularProgress } from '@material-ui/core'
 import FetchButton from '../components/fetchButton/FetchButton'
 import FileInput from '../components/fileInput/FileInput'
 import FileNameList from '../components/fileNameList/FileNamelist'
@@ -139,6 +140,13 @@ const Homepage = () => {
           )}
           <FetchButton onButtonSubmit={onButtonSubmit} />
         </div>
+        {resultList.length === fileList.length ? (
+          resultList.length > 0 ? (
+            <h4 className='loader'>Completed</h4>
+          ) : null
+        ) : toggleLoading ? (
+          <CircularProgress className='loader' />
+        ) : null}
 
         <table>
           <tr>

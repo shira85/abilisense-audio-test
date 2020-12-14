@@ -51,7 +51,13 @@
   opacity: 0.8;
 }
 
+.loader {
+  display: inline-block;
+  margin-left: 20px;
+}
+
 table {
+  margin-left: 20px;
   width: auto;
   counter-reset: row-num;
   text-align: left;

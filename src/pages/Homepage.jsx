@@ -1,15 +1,12 @@
 import React, { useState } from 'react'
-import Header from './components/Header/Header'
-import FileInput from './components/fileInput/FileInput'
-import FetchButton from './components/fetchButton/FetchButton'
-import FileNameList from './components/fileNameList/FileNamelist'
-import ResultList from './components/resultList/ResultList'
-import UserRecord from './components/UserRecord/UserRecord'
+import FetchButton from '../components/fetchButton/FetchButton'
+import FileInput from '../components/fileInput/FileInput'
+import FileNameList from '../components/fileNameList/FileNamelist'
+import Header from '../components/Header/Header'
+import ResultList from '../components/resultList/ResultList'
+import UserRecord from '../components/UserRecord/UserRecord'
 
-import Homepage from './pages/Homepage'
-import './styles.css'
-
-export default function App() {
+const Homepage = () => {
   const [fileList, setFileList] = useState([])
   const [resultList, setResultList] = useState([])
   const [toggleResult, setToggleResult] = useState(false)
@@ -122,44 +119,41 @@ export default function App() {
     jsonArray.unshift(temp) // putting the best result first
     return jsonArray
   }
+  return (
+    <>
+      <Header />
+      <div className='pink-border'>
+        <div className='file-btn-container'>
+          <button
+            className='button'
+            onClick={() => {
+              setToggleRecord(!toggleRecord)
+            }}
+          >
+            {toggleRecord ? 'upload files?' : 'record?'}
+          </button>
+          {toggleRecord ? (
+            <UserRecord checkRecordSize={checkRecordSize} />
+          ) : (
+            <FileInput checkFileSize={checkFileSize} />
+          )}
+          <FetchButton onButtonSubmit={onButtonSubmit} />
+        </div>
 
-  const downloadCSV = () => {
-    for (let i = 0; i < fileList.length; i++) {
-      let temp = {
-        File: fileList[i].name,
-        Sound: resultList[i][0].events[0],
-      }
+        <table>
+          <tr>
+            <th>File Name</th>
+            <th>Result</th>
+          </tr>
 
-      fileCSV.push(temp)
-      setFileCSV([...fileCSV])
-    }
-  }
-
-  const arrangeStringResult = (json) => {
-    for (let res in json) {
-      let spaceIdx = json[res].events[0].indexOf(' ')
-      let sliceResult = json[res].events[0].slice(0, spaceIdx)
-      let isCategoryExist = stringResultList.findIndex(
-        (res) => res.name === sliceResult
-      )
-      if (isCategoryExist !== -1 && stringResultList.length > 1) {
-        stringResultList[isCategoryExist].count++
-        setStringResultList([...stringResultList])
-      } else {
-        stringResultList.push({ name: sliceResult, count: 1 })
-        setStringResultList([...stringResultList])
-      }
-    }
-  }
-
-  const clearAll = () => {
-    setFileList([])
-    setResultList([])
-    setToggleResult(false)
-    setFileCSV([])
-    setToggleLoading(false)
-    setStringResultList([])
-  }
-
-  return <Homepage />
+          <tr>
+            <FileNameList fileList={fileList} />
+            <ResultList resultList={resultList} toggleResult={toggleResult} />
+          </tr>
+        </table>
+      </div>
+    </>
+  )
 }
+
+export default Homepage

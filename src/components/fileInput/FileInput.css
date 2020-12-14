@@ -16,9 +16,17 @@
   display: inline-block;
   cursor: pointer;
   width: auto;
+  margin-right: 20px;
 }
 
 .input-file:focus + label,
 .input-file + label:hover {
   opacity: 0.8;
+}
+
+@media only screen and (max-width: 400px) {
+  .input-file + label {
+    font-size: 1rem;
+    padding: 5px 10px;
+  }
 }

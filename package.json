@@ -15,7 +15,6 @@
     "react-dom": "17.0.0",
     "react-scripts": "3.4.3",
     "recorder-js": "^1.0.7",
-    "recordrtc": "^5.6.1",
     "swagger": "0.7.5",
     "xhr": "^2.6.0"
   },

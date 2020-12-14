@@ -32,13 +32,36 @@
 }
 .file-btn-container {
   display: flex;
-  margin: 20px;
+  margin: 15px;
+}
+
+.button {
+  font-size: 1.25em;
+  font-weight: 700;
+  color: white;
+  padding: 10px 20px;
+  border: solid 1px gray;
+  width: auto;
+  margin-right: 20px;
+  background-color: black;
+  display: inline-block;
+  cursor: pointer;
+}
+.button:hover {
+  opacity: 0.8;
 }
 
 table {
   width: auto;
   counter-reset: row-num;
   text-align: left;
+}
+
+@media only screen and (max-width: 400px) {
+  .button {
+    font-size: 1rem;
+    padding: 5px 10px;
+  }
 }
 /* table tr {
   counter-increment: row-num;

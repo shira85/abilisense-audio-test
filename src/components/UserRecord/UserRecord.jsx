@@ -37,10 +37,14 @@ const UserRecord = ({ checkRecordSize }) => {
   }
 
   return (
-    <div>
-      <button onClick={startRecording}>start</button>
-      <button onClick={stopRecording}>stop</button>
-    </div>
+    <>
+      <button className='button' onClick={startRecording}>
+        start
+      </button>
+      <button className='button' onClick={stopRecording}>
+        stop
+      </button>
+    </>
   )
 }
 

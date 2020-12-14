@@ -26,6 +26,9 @@ const UserRecord = ({ checkRecordSize }) => {
     recorder.stop().then(({ blob, buffer }) => {
       blob = blob
       blob.name = 'record.wav'
+      blob.lastModified = new Date().getTime()
+      blob.lastModifiedDate = new Date()
+      blob.webkitRelativePath = ''
       checkRecordSize(blob)
 
       // buffer is an AudioBuffer

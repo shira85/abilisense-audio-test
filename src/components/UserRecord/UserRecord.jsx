@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Recorder from 'recorder-js'
 
-const UserRecord = ({ checkRecordSize }) => {
+const UserRecord = ({ addRecord }) => {
   const [isRecording, setIsRecording] = useState(false)
   const [recordURL, setRecordURL] = useState(null)
   const [message, setMessage] = useState(null)
@@ -31,12 +31,17 @@ const UserRecord = ({ checkRecordSize }) => {
     recorder.stop().then(({ blob, buffer }) => {
       setMessage(null)
       setIsRecording(false)
-      blob.name = 'record.wav'
-      blob.lastModified = new Date().getTime()
-      blob.lastModifiedDate = new Date()
-      blob.webkitRelativePath = ''
-      setRecordURL(URL.createObjectURL(blob))
-      checkRecordSize(blob)
+      if (blob.size > 500000) {
+        alert(`file size have to be less than 0.5mb,please record again !`)
+        return
+      } else {
+        blob.name = 'record.wav'
+        blob.lastModified = new Date().getTime()
+        blob.lastModifiedDate = new Date()
+        blob.webkitRelativePath = ''
+        setRecordURL(URL.createObjectURL(blob))
+        addRecord(blob)
+      }
 
       // buffer is an AudioBuffer
     })

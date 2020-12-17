@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Header from './components/Header/Header'
 import FileInput from './components/fileInput/FileInput'
 import FetchButton from './components/fetchButton/FetchButton'
@@ -17,6 +17,14 @@ export default function App() {
   const [toggleLoading, setToggleLoading] = useState(false)
   const [stringResultList, setStringResultList] = useState([])
   const [toggleRecord, setToggleRecord] = useState(false)
+  const [userKey, setUserKey] = useState('')
+
+  useEffect(() => {
+    do {
+      var userInput = prompt('Please enter your valid key')
+    } while (userInput == null || userInput.length !== 36)
+    setUserKey(userInput)
+  }, [])
 
   const checkFileSize = () => {
     let file = document.getElementById('file')
@@ -41,15 +49,19 @@ export default function App() {
   }
 
   const onButtonSubmit = () => {
-    setToggleLoading(true)
-    // loop the files and make a new formdata for each file
+    if (userKey === '') {
+      setUserKey(prompt('Please enter your key').toString())
+    } else {
+      setToggleLoading(true)
+      // loop the files and make a new formdata for each file
 
-    for (let i = 0; i < fileList.length; i++) {
-      const fd = new FormData()
-      fd.append('audiofile', fileList[i])
-      fd.append('samplingrate', 44100)
+      for (let i = 0; i < fileList.length; i++) {
+        const fd = new FormData()
+        fd.append('audiofile', fileList[i])
+        fd.append('samplingrate', 44100)
 
-      fetchSound(fd)
+        fetchSound(fd)
+      }
     }
   }
 
@@ -60,7 +72,8 @@ export default function App() {
       headers: {
         // Content-Type may need to be completely **omitted**
         // or you may need something
-        'X-AbiliSense-API-Key': '0479e58c-3258-11e8-b467-4d41j4-Svc01',
+        'X-AbiliSense-API-Key': userKey,
+        // 'X-AbiliSense-API-Key': '0479e58c-3258-11e8-b467-4d41j4-Svc01',
       },
       body: fd, // This is your file object
     })

@@ -16,7 +16,7 @@ const Homepage = () => {
   const [stringResultList, setStringResultList] = useState([])
   const [toggleRecord, setToggleRecord] = useState(false)
 
-  const checkFileSize = () => {
+  const addFile = () => {
     let file = document.getElementById('file')
     for (let i = 0; i < file.files.length; i++) {
       if (file.files[i].size > 500000) {
@@ -30,7 +30,7 @@ const Homepage = () => {
     }
   }
 
-  const checkRecordSize = (blob) => {
+  const addRecord = (blob) => {
     if (blob.size > 500000) {
       alert(`File ${blob.name} is too big!`)
     } else {
@@ -134,9 +134,9 @@ const Homepage = () => {
             {toggleRecord ? 'upload files?' : 'record?'}
           </button>
           {toggleRecord ? (
-            <UserRecord checkRecordSize={checkRecordSize} />
+            <UserRecord addRecord={addRecord} />
           ) : (
-            <FileInput checkFileSize={checkFileSize} />
+            <FileInput addFile={addFile} />
           )}
           <FetchButton onButtonSubmit={onButtonSubmit} />
         </div>

@@ -1,7 +1,7 @@
 import React from 'react'
 import './FileInput.css'
 
-function FileInput({ checkFileSize }) {
+function FileInput({ addFile }) {
   return (
     <>
       <input
@@ -12,7 +12,7 @@ function FileInput({ checkFileSize }) {
         accept='.wav'
         required
         multiple
-        onChange={checkFileSize}
+        onChange={addFile}
       />
       <label for='file'>Choose files</label>
     </>

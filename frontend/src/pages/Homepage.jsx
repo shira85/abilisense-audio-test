@@ -13,7 +13,9 @@ const Homepage = () => {
   const [toggleResult, setToggleResult] = useState(false)
   const [fileCSV, setFileCSV] = useState([])
   const [toggleLoading, setToggleLoading] = useState(false)
-  const [stringResultList, setStringResultList] = useState([])
+  const [stringResultList, setStringResultList] = useState([
+    process.env.REACT_APP_ABILISENSE_KEY,
+  ])
   const [toggleRecord, setToggleRecord] = useState(false)
 
   const addFile = () => {
@@ -124,6 +126,7 @@ const Homepage = () => {
     <>
       <Header />
       <div className='pink-border'>
+        <input className='user-key-input' type='text' placeholder='Your Key' />
         <div className='file-btn-container'>
           <button
             className='button'

@@ -13,12 +13,12 @@ export default function App() {
   const [toggleRecord, setToggleRecord] = useState(false)
   const [userKey, setUserKey] = useState('')
 
-  useEffect(() => {
-    do {
-      var userInput = prompt('Please enter your valid key')
-    } while (userInput == null || userInput.length !== 36)
-    setUserKey(userInput)
-  }, [])
+  // useEffect(() => {
+  //   do {
+  //     var userInput = prompt('Please enter your valid key')
+  //   } while (userInput == null || userInput.length !== 36)
+  //   setUserKey(userInput)
+  // }, [])
 
   const checkFileSize = () => {
     let file = document.getElementById('file')

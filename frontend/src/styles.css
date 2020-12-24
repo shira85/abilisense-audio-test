@@ -8,6 +8,16 @@
   width: auto;
   height: 90vh;
 }
+.user-key-input {
+  margin-top: 0.5em;
+  margin-left: 20px;
+  padding: 0.5em;
+}
+.user-key-input::placeholder {
+  color: white;
+  text-align: center;
+}
+
 .file-btn-container {
   display: flex;
   margin: 15px;

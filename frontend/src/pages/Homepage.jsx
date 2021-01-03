@@ -127,12 +127,12 @@ const Homepage = () => {
   }
 
   const clearAll = () => {
+    let file = document.getElementById('file')
+    file.value ? (file.value = '') : null
     setFileList([])
     setResultList([])
     setToggleResult(false)
-    setFileCSV([])
     setToggleLoading(false)
-    setStringResultList([])
   }
 
   return (
@@ -176,9 +176,8 @@ const Homepage = () => {
 
           <tr>
             <FileNameList fileList={fileList} />
-            {resultList.length === fileList.length && (
-              <ResultList resultList={resultList} toggleResult={toggleResult} />
-            )}
+
+            <ResultList resultList={resultList} toggleResult={toggleResult} />
           </tr>
         </table>
       </div>

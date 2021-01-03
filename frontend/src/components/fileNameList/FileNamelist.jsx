@@ -1,13 +1,18 @@
-import React from "react";
+import React from 'react'
 
 function FileNameList({ fileList }) {
   return (
-    <td>
+    <>
       {fileList.map((file, idx) => {
-        return <tr>{file.name}</tr>;
+        return (
+          <tr key={idx}>
+            <td>{idx + 1}.</td>
+            <td>{file.name}</td>
+          </tr>
+        )
       })}
-    </td>
-  );
+    </>
+  )
 }
 
-export default FileNameList;
+export default FileNameList

@@ -17,10 +17,10 @@ const Homepage = () => {
   const [toggleRecord, setToggleRecord] = useState(false)
 
   const addFile = () => {
+    setToggleLoading(false)
     if (fileList.length > 0) {
-      setFileList([])
-      console.log(fileList)
       setResultList([])
+      setFileList([])
     }
     let file = document.getElementById('file')
     for (let i = 0; i < file.files.length; i++) {
@@ -36,6 +36,10 @@ const Homepage = () => {
   }
 
   const addRecord = (blob) => {
+    setToggleLoading(false)
+    if (resultList.length > 0) {
+      setResultList([])
+    }
     if (blob.size > 700000) {
       alert(`File ${blob.name} is too big!`)
     } else {

@@ -52,11 +52,11 @@ const Homepage = () => {
       fd.append('audiofile', fileList[i])
       fd.append('samplingrate', 44100)
 
-      fetchSound(fd)
+      fetchSound(fd, i)
     }
   }
 
-  const fetchSound = async (fd) => {
+  const fetchSound = async (fd, idx) => {
     const response = await fetch('https://api.abilisense.com/v1/api/predict', {
       // Your POST endpoint
       method: 'POST',
@@ -74,6 +74,9 @@ const Homepage = () => {
     arrangeResult(jsonArray) // putting the best result first
     resultList.push(jsonArray)
     setResultList([...resultList])
+    fileList[idx].result = jsonArray
+    setFileList([...fileList])
+
     // arrangeStringResult(jsonArray); // arraging the results as strings with no 0. value for categoryList component
   }
 
@@ -128,7 +131,9 @@ const Homepage = () => {
 
   const clearAll = () => {
     let file = document.getElementById('file')
-    file.value ? (file.value = '') : null
+    if (file.value) {
+      file.value = ''
+    }
     setFileList([])
     setResultList([])
     setToggleResult(false)
@@ -170,15 +175,14 @@ const Homepage = () => {
 
         <table>
           <tr>
+            <th>Number</th>
             <th>File Name</th>
             <th>Result</th>
           </tr>
 
-          <tr>
-            <FileNameList fileList={fileList} />
+          <FileNameList fileList={fileList} />
 
-            <ResultList resultList={resultList} toggleResult={toggleResult} />
-          </tr>
+          {/* <ResultList resultList={resultList} toggleResult={toggleResult} /> */}
         </table>
       </div>
     </>

@@ -8,6 +8,7 @@ function FileNameList({ fileList }) {
           <tr key={idx}>
             <td>{idx + 1}.</td>
             <td>{file.name}</td>
+            <td> {file.result ? file.result[0] : null} </td>
           </tr>
         )
       })}

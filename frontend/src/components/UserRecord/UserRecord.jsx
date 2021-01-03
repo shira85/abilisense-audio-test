@@ -15,7 +15,7 @@ const UserRecord = ({ addRecord }) => {
   })
 
   navigator.mediaDevices
-    .getUserMedia({ audio: true, channelCount: 1, echoCancellation: true })
+    .getUserMedia({ audio: true, channelCount: 0, echoCancellation: true })
     .then((stream) => recorder.init(stream))
     .catch((err) => console.log('Uh oh... unable to get stream...', err))
 
@@ -31,7 +31,7 @@ const UserRecord = ({ addRecord }) => {
     recorder.stop().then(({ blob, buffer }) => {
       setMessage(null)
       setIsRecording(false)
-      if (blob.size > 500000) {
+      if (blob.size > 700000) {
         alert(`file size have to be less than 0.5mb,please record again !`)
         return
       } else {
@@ -56,7 +56,7 @@ const UserRecord = ({ addRecord }) => {
       <button className='button' onClick={startRecording}>
         <i class='fas fa-microphone'></i>
       </button>
-      {message ? <h5 className='ml-1'> {message} </h5> : null}
+      {message && <h5 className='ml-1'> {message} </h5>}
     </>
   )
 }

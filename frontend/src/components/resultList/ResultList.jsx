@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 
 function ResultList({ resultList, toggleResult }) {
   return (
@@ -6,18 +6,18 @@ function ResultList({ resultList, toggleResult }) {
       {resultList.map((sounds) => {
         if (toggleResult) {
           return (
-            <tr>
+            <td>
               {sounds.map((sound) => {
-                return sound[0] + "\n";
+                return sound[0]
               })}
-            </tr>
-          );
+            </td>
+          )
         } else {
-          return <tr>{sounds[0]}</tr>;
+          return <tr>{sounds[0]}</tr>
         }
       })}
     </td>
-  );
+  )
 }
 
-export default ResultList;
+export default ResultList

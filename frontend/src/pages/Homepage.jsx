@@ -17,9 +17,14 @@ const Homepage = () => {
   const [toggleRecord, setToggleRecord] = useState(false)
 
   const addFile = () => {
+    if (fileList.length > 0) {
+      setFileList([])
+      console.log(fileList)
+      setResultList([])
+    }
     let file = document.getElementById('file')
     for (let i = 0; i < file.files.length; i++) {
-      if (file.files[i].size > 500000) {
+      if (file.files[i].size > 700000) {
         alert(`File ${file.files[i].name} is too big!`)
         file.value = ''
         break
@@ -31,7 +36,7 @@ const Homepage = () => {
   }
 
   const addRecord = (blob) => {
-    if (blob.size > 500000) {
+    if (blob.size > 700000) {
       alert(`File ${blob.name} is too big!`)
     } else {
       setFileList([blob])
@@ -120,10 +125,21 @@ const Homepage = () => {
     jsonArray.unshift(temp) // putting the best result first
     return jsonArray
   }
+
+  const clearAll = () => {
+    let file = document.getElementById('file')
+    file.value ? (file.value = '') : null
+    setFileList([])
+    setResultList([])
+    setToggleResult(false)
+    setToggleLoading(false)
+  }
+
   return (
     <>
       <Header />
       <div className='pink-border'>
+        <input className='user-key-input' type='text' placeholder='Your Key' />
         <div className='file-btn-container'>
           <button
             className='button'
@@ -139,6 +155,10 @@ const Homepage = () => {
             <FileInput addFile={addFile} />
           )}
           <FetchButton onButtonSubmit={onButtonSubmit} />
+
+          <button className='button' onClick={clearAll}>
+            Clear
+          </button>
         </div>
         {resultList.length === fileList.length ? (
           resultList.length > 0 ? (
@@ -156,6 +176,7 @@ const Homepage = () => {
 
           <tr>
             <FileNameList fileList={fileList} />
+
             <ResultList resultList={resultList} toggleResult={toggleResult} />
           </tr>
         </table>

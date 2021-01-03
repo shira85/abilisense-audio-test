@@ -8,16 +8,26 @@
   width: auto;
   height: 90vh;
 }
+.user-key-input {
+  margin-top: 0.5em;
+  margin-left: 20px;
+  padding: 0.5em;
+}
+.user-key-input::placeholder {
+  color: white;
+  text-align: center;
+}
+
 .file-btn-container {
   display: flex;
-  margin: 15px;
+  margin: 1rem;
 }
 
 .button {
-  font-size: 1.25em;
+  font-size: 1em;
   font-weight: 700;
   color: white;
-  padding: 10px 20px;
+  padding: 0.75rem 1.75rem;
   border: solid 1px gray;
   width: auto;
   margin-right: 20px;
@@ -31,20 +41,24 @@
 
 .loader {
   display: inline-block;
-  margin-left: 20px;
+  margin-left: 1.5rem;
 }
 
 table {
-  margin-left: 20px;
+  margin-left: 1.5rem;
   width: auto;
-  counter-reset: row-num;
   text-align: left;
 }
 
 @media only screen and (max-width: 400px) {
+  .file-btn-container {
+    flex-direction: column;
+    justify-content: center;
+    align-items: baseline;
+  }
   .button {
-    font-size: 1rem;
-    padding: 5px 10px;
+    font-size: 0.75rem;
+    padding: 0.5rem 0.5rem;
   }
 }
 /* table tr {

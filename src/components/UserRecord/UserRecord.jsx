@@ -15,7 +15,7 @@ const UserRecord = ({ addRecord }) => {
   })
 
   navigator.mediaDevices
-    .getUserMedia({ audio: true, channelCount: 1, echoCancellation: false })
+    .getUserMedia({ audio: true, channelCount: 1 })
     .then((stream) => recorder.init(stream))
     .catch((err) => console.log('Uh oh... unable to get stream...', err))
 
@@ -24,7 +24,7 @@ const UserRecord = ({ addRecord }) => {
     recorder.start().then(() => setIsRecording(true))
     setTimeout(function () {
       stopRecording()
-    }, 2500)
+    }, 7000)
   }
 
   function stopRecording() {

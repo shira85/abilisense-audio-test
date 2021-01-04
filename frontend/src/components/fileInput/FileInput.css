@@ -7,12 +7,12 @@
   z-index: -1;
 }
 .input-file + label {
-  font-size: 1em;
+  font-size: 1.25em;
   font-weight: 700;
-  color: white;
+  color: #fff;
   padding: 10px 20px;
-  border: solid 1px gray;
-  background-color: black;
+  border: 1px solid grey;
+  background-color: #000;
   display: inline-block;
   cursor: pointer;
   width: auto;

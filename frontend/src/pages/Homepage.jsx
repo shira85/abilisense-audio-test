@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { CircularProgress } from '@material-ui/core'
+import { Table, Container } from 'react-bootstrap'
 import FetchButton from '../components/fetchButton/FetchButton'
 import FileInput from '../components/fileInput/FileInput'
 import FileNameList from '../components/fileNameList/FileNamelist'
 import Header from '../components/Header/Header'
-import ResultList from '../components/resultList/ResultList'
 import UserRecord from '../components/UserRecord/UserRecord'
 
 const Homepage = () => {
@@ -29,6 +29,7 @@ const Homepage = () => {
         file.value = ''
         break
       } else {
+        file.files[i].blobURL = URL.createObjectURL(file.files[i])
         fileList.push(file.files[i])
         setFileList([...fileList])
       }
@@ -147,7 +148,7 @@ const Homepage = () => {
   return (
     <>
       <Header />
-      <div className='pink-border'>
+      <Container fluid className='pink-border'>
         <input className='user-key-input' type='text' placeholder='Your Key' />
         <div className='file-btn-container'>
           <button
@@ -176,19 +177,30 @@ const Homepage = () => {
         ) : toggleLoading ? (
           <CircularProgress className='loader' />
         ) : null}
+        <Container>
+          <Table
+            striped
+            bordered
+            hover
+            responsive
+            className='table-md table-data'
+          >
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>File Name</th>
+                <th>Play Sound</th>
+                <th>Result</th>
+              </tr>
+            </thead>
+            <tbody>
+              <FileNameList fileList={fileList} />
+            </tbody>
 
-        <table>
-          <tr>
-            <th>Number</th>
-            <th>File Name</th>
-            <th>Result</th>
-          </tr>
-
-          <FileNameList fileList={fileList} />
-
-          {/* <ResultList resultList={resultList} toggleResult={toggleResult} /> */}
-        </table>
-      </div>
+            {/* <ResultList resultList={resultList} toggleResult={toggleResult} /> */}
+          </Table>
+        </Container>
+      </Container>
     </>
   )
 }

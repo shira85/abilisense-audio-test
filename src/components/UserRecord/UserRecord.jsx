@@ -24,14 +24,14 @@ const UserRecord = ({ addRecord }) => {
     recorder.start().then(() => setIsRecording(true))
     setTimeout(function () {
       stopRecording()
-    }, 2500)
+    }, 4000)
   }
 
   function stopRecording() {
     recorder.stop().then(({ blob, buffer }) => {
       setMessage(null)
       setIsRecording(false)
-      if (blob.size > 7000000) {
+      if (blob.size > 10000000) {
         alert(`file size have to be less than 0.7mb,please record again !`)
         return
       } else {

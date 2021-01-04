@@ -24,7 +24,7 @@ const UserRecord = ({ addRecord }) => {
     recorder.start().then(() => setIsRecording(true))
     setTimeout(function () {
       stopRecording()
-    }, 7000)
+    }, 6000)
   }
 
   function stopRecording() {

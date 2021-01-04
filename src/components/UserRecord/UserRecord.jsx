@@ -15,7 +15,7 @@ const UserRecord = ({ addRecord }) => {
   })
 
   navigator.mediaDevices
-    .getUserMedia({ audio: true, channelCount: 0, echoCancellation: true })
+    .getUserMedia({ audio: true, channelCount: 1, echoCancellation: false })
     .then((stream) => recorder.init(stream))
     .catch((err) => console.log('Uh oh... unable to get stream...', err))
 
@@ -32,7 +32,7 @@ const UserRecord = ({ addRecord }) => {
       setMessage(null)
       setIsRecording(false)
       if (blob.size > 700000) {
-        alert(`file size have to be less than 0.5mb,please record again !`)
+        alert(`file size have to be less than 0.7mb,please record again !`)
         return
       } else {
         blob.name = 'record.wav'

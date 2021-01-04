@@ -24,14 +24,14 @@
 }
 
 .button {
-  font-size: 1em;
+  font-size: 1.25em;
   font-weight: 700;
-  color: white;
-  padding: 0.75rem 1.75rem;
-  border: solid 1px gray;
+  color: #fff;
+  padding: 10px 20px;
+  border: 1px solid grey;
   width: auto;
   margin-right: 20px;
-  background-color: black;
+  background-color: #000;
   display: inline-block;
   cursor: pointer;
 }
@@ -45,8 +45,7 @@
 }
 
 table {
-  margin-left: 1.5rem;
-  width: auto;
+  max-width: 75%;
   text-align: left;
 }
 
@@ -61,9 +60,3 @@ table {
     padding: 0.5rem 0.5rem;
   }
 }
-/* table tr {
-  counter-increment: row-num;
-}
-table tr td:first-child::before {
-  content: counter(row-num) ". ";
-} */

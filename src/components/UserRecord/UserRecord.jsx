@@ -39,7 +39,7 @@ const UserRecord = ({ addRecord }) => {
         blob.lastModified = new Date().getTime()
         blob.lastModifiedDate = new Date()
         blob.webkitRelativePath = ''
-        setRecordURL(URL.createObjectURL(blob))
+        blob.blobURL = URL.createObjectURL(blob)
         addRecord(blob)
       }
 

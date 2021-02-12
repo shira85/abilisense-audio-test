@@ -24,7 +24,8 @@ const SingleFileData = ({ idx, name, audio, audioDuration, result, file }) => {
         </a> */}
         <audio controls src={file.blobURL}></audio>
       </td>
-      <td> {result ? result[0] : null} </td>
+        {/* <td> {result ? result[0] : null} </td> */}
+      <td> {result ? result : null} </td>
     </tr>
   )
 }

@@ -61,7 +61,7 @@ const Homepage = () => {
     }
   }
 
-  const fetchSound = async (fd, idx) => {
+ /* const fetchSound = async (fd, idx) => {
     const response = await fetch('https://api.abilisense.com/v1/api/predict', {
       // Your POST endpoint
       method: 'POST',
@@ -83,6 +83,46 @@ const Homepage = () => {
     setFileList([...fileList])
 
     // arrangeStringResult(jsonArray); // arraging the results as strings with no 0. value for categoryList component
+  }*/
+  const fetchSound = async (fd, idx) => {
+    debugger
+    const response = await fetch("https://api.abilisense.com/v1/api/Deepsense_500", {
+      // Your POST endpoint
+      method: 'POST',
+      headers: {
+        // Content-Type may need to be completely **omitted**
+        // or you may need something
+        "X-AbiliSense-API-Key": "0479e58c-3258-11e8-b467-4d41j4-mm141",
+      },
+      body: fd, // This is your file object
+    })
+    const data = await response.json();
+    const lengthData = data.length;
+    let json = {};
+    // if lengthData equal 1 there is only one predict
+    if (lengthData == 0) {
+      json = { Label: 'No predicts' };
+    }
+    else {
+      let bigScoreIndex;
+      let bigScore = 0;
+      for (let i = 0; i < lengthData; i++) {
+        if (data[i].events.Score > bigScore) {
+          bigScore = data[i].events.Score
+          bigScoreIndex = i;
+        }
+      }
+      try{
+        json = { Label: data[bigScoreIndex].events.Label? data[bigScoreIndex].events.Label:'No predict', Score: data[bigScoreIndex].events.Score }
+        resultList.push(json.Label)
+        setResultList([...resultList])
+        fileList[idx].result=json.Label;
+        setFileList([...fileList])
+      }
+      catch(e){
+        console.log('error');
+      }
+    }
   }
 
   const makeResponseArray = (json) => {
